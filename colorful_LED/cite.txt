@@ -1,0 +1,262 @@
+/**
+  ******************************************************************************
+  * 文件名程: main.c
+  * 作    者: By Sw Young
+  * 版    本: V1.0
+  * 功    能:
+  * 编写日期: 2018.3.29
+  ******************************************************************************
+  * 说明：
+  * 硬件平台：
+  *   MCUc:TM4C123
+  * 软件设计说明：
+  *   通过PWM控制RGB三色灯亮任意
+  * Github：
+  ******************************************************************************
+**/
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "inc/hw_types.h"
+#include "inc/hw_memmap.h"
+#include "inc/hw_gpio.h"
+#include "inc/hw_ints.h"
+#include "driverlib/fpu.h"
+#include "driverlib/fpu.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/pin_map.h"
+#include "driverlib/uart.h"
+#include "driverlib/timer.h"
+#include "driverlib/gpio.h"
+#include "driverlib/adc.h"
+#include "utils/uartstdio.h"
+#include "driverlib/pwm.h"
+#include "colorful_LED/colorful_LED.h"
+#include "uart/uart.h"
+#include "uart/uartstdio.h"
+
+int main (void)
+  {
+  uint8_t i =1;
+  SysCtlClockSet(SYSCTL_SYSDIV_2_5 |SYSCTL_USE_PLL|SYSCTL_OSC_MAIN |SYSCTL_XTAL_16MHZ);
+  LED_ColorInit();
+  Uart0Iint();
+  while(1)
+   {
+        i = 1;
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(160, 0, 2);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(104, 0, 2);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(79, 12, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(227, 84, 47);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(225, 0, 51);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(129, 72, 105);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 102, 51);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(203, 0, 25);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(243, 137, 38);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(231, 69, 8);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(252, 160, 41);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(235, 104, 24);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 102, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(0, 206, 8);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 206, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 156, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 255, 153);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 192, 70);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(242, 204, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 223, 96);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(223, 159, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(153, 153, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(253, 204, 3);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(153, 153, 102);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(51, 51, 51);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 255, 204);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(5, 198, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(6, 219, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(205, 254, 104);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(151, 231, 97);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(204, 255, 51);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(215, 0, 255);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(248, 239, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(94, 165, 157);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(204, 0, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 80, 6);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(14, 55, 205);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(222, 148, 13);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(124, 90, 166);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(105, 111, 239);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 255, 153);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 192, 70);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(207, 32, 183);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 112, 56);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 255, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(222, 16, 123);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 0, 103);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 0, 255);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 204, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(16, 142, 255);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(219, 13, 123);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(255, 0, 153);
+        SysCtlDelay(SysCtlClockGet()/3);
+        UARTprintf("%d \n",i);
+        i++;
+        LED_Color(144, 236, 0);
+        SysCtlDelay(SysCtlClockGet()/3);
+   }
+}
+
